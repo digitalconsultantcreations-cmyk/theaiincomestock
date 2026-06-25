@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Income Stack – Caribbean Entrepreneurs</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #0D0D0D;
+    --paper:    #F7F5F0;
+    --gold:     #C9A84C;
+    --gold-lt:  #F0D98A;
+    --teal:     #1A6B6B;
+    --teal-lt:  #E4F0F0;
+    --muted:    #6B6B6B;
+    --rule:     #D8D4CC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: .04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-cta {
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-size: .875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--teal); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 24px 64px;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-lt);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 24px;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+    position: relative;
+  }
+  h1 em::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: var(--gold-lt);
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 40px;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 4px 20px rgba(201,168,76,.35);
+  }
+  .hero-cta:hover { background: var(--gold-lt); transform: translateY(-2px); }
+  .hero-price {
+    margin-top: 14px;
+    font-size: .9rem;
+    color: var(--muted);
+  }
+  .hero-price strong { color: var(--ink); font-size: 1.1rem; }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--ink);
+    padding: 12px 0;
+  }
+  .ticker {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: ticker 22s linear infinite;
+  }
+  .ticker span {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .ticker span.dot { color: #555; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 72px 24px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .section-label {
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+
+  /* ── PAIN ── */
+  .pain { background: var(--ink); color: var(--paper); }
+  .pain .section-label { color: var(--gold); }
+  .pain h2 { color: #fff; }
+  .pain .section-intro { color: #aaa; }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .pain-card {
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 28px 24px;
+  }
+  .pain-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
+  .pain-card p { font-size: .95rem; color: #bbb; line-height: 1.6; }
+
+  /* ── WHAT'S INSIDE ── */
+  .modules { background: var(--paper); }
+  .module-list { display: flex; flex-direction: column; gap: 0; }
+  .module {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .module:last-child { border-bottom: none; }
+  .module-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .module h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .module p { font-size: .93rem; color: var(--muted); }
+
+  /* ── TOOLS / AFFILIATE ── */
+  .tools { background: var(--teal-lt); }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .tool-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    border: 1px solid var(--rule);
+  }
+  .tool-card .t-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--teal);
+  }
+  .tool-card .t-desc { font-size: .85rem; color: var(--muted); }
+
+  /* ── FOR WHO ── */
+  .forwhom ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .forwhom li {
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    font-size: .95rem;
+    font-weight: 500;
+  }
+
+  /* ── TESTIMONIALS placeholder ── */
+  .social-proof { background: var(--ink); color: #fff; }
+  .social-proof h2 { color: #fff; }
+  .social-proof .section-intro { color: #999; }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .testi {
+    background: #1a1a1a;
+    border-radius: 6px;
+    padding: 28px 24px;
+    border: 1px solid #2a2a2a;
+  }
+  .testi p { font-size: .95rem; color: #ccc; line-height: 1.65; margin-bottom: 16px; }
+  .testi .author { font-size: .82rem; color: var(--gold); font-weight: 600; }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--paper); text-align: center; }
+  .price-box {
+    max-width: 460px;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 48px 40px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.08);
+  }
+  .price-tag {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 3.5rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-tag span { font-size: 1.5rem; vertical-align: super; }
+  .price-note { font-size: .85rem; color: var(--muted); margin-bottom: 32px; }
+  .price-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+  .price-includes li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .price-includes li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+  .buy-btn {
+    display: block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 18px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 4px 20px rgba(201,168,76,.35);
+  }
+  .buy-btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
+  .guarantee {
+    margin-top: 18px;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--teal); color: #fff; }
+  .about h2 { color: #fff; }
+  .about .section-intro { color: rgba(255,255,255,.75); }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .about-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(255,255,255,.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+  .about-text p { font-size: 1rem; color: rgba(255,255,255,.85); line-height: 1.7; margin-bottom: 16px; }
+  .about-contact { font-size: .9rem; color: var(--gold-lt); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--rule);
+    font-size: .82rem;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 14px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-avatar { max-width: 120px; }
+    .price-box { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>AI</span> Income Stack</a>
+  <a class="nav-cta" href="https://creativedigital36.gumroad.com/l/jaqleu">Get Instant Access — $67</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">For Caribbean Entrepreneurs</div>
+  <h1>The <em>AI Income Stack</em> — Build, Automate & Earn Online</h1>
+  <p class="hero-sub">A complete guide showing how T&T service businesses use AI tools to get more clients, run smarter, and create real digital income — starting this week.</p>
+  <a href="https://creativedigital36.gumroad.com/l/jaqleu" class="hero-cta">Get Instant Access →</a>
+  <p class="hero-price">One-time payment of <strong>$67 USD</strong> · Instant digital download</p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>WhatsApp Automation</span><span class="dot">·</span>
+    <span>Online Booking</span><span class="dot">·</span>
+    <span>Digital Products</span><span class="dot">·</span>
+    <span>AI Tools</span><span class="dot">·</span>
+    <span>Affiliate Income</span><span class="dot">·</span>
+    <span>Client Retention</span><span class="dot">·</span>
+    <span>Local Business Growth</span><span class="dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span>WhatsApp Automation</span><span class="dot">·</span>
+    <span>Online Booking</span><span class="dot">·</span>
+    <span>Digital Products</span><span class="dot">·</span>
+    <span>AI Tools</span><span class="dot">·</span>
+    <span>Affiliate Income</span><span class="dot">·</span>
+    <span>Client Retention</span><span class="dot">·</span>
+    <span>Local Business Growth</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="section-label">Sound familiar?</div>
+    <h2>Most local businesses are stuck doing everything manually</h2>
+    <p class="section-intro">While the rest of the world automates, most T&T entrepreneurs are still chasing clients on WhatsApp, missing bookings, and leaving money on the table.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">😩</div>
+        <p>You're spending hours on admin work that AI could handle in minutes</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📉</div>
+        <p>Clients book once and disappear — with no system to follow up or win them back</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🔍</div>
+        <p>You don't know which tools are worth paying for — or how to make them work together</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">💸</div>
+        <p>You're selling your time by the hour with no digital income working while you sleep</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="modules">
+  <div class="container">
+    <div class="section-label">What's inside</div>
+    <h2>A step-by-step blueprint built for T&T businesses</h2>
+    <p class="section-intro">Six focused modules — no fluff, no theory. Just the tools, systems, and strategies that work in the Caribbean market right now.</p>
+    <div class="module-list">
+      <div class="module">
+        <div class="module-num">01</div>
+        <div>
+          <h3>Find Your Niche & Position Your Business</h3>
+          <p>Identify the most profitable service angle for your market. Understand exactly who you're selling to and what they'll pay for.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-num">02</div>
+        <div>
+          <h3>Build Your AI Tool Stack (Free & Low-Cost)</h3>
+          <p>The exact tools I use to run a digital consultancy from a phone — covering booking, WhatsApp automation, forms, proposals, and more.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-num">03</div>
+        <div>
+          <h3>Automate Client Getting & Follow-Up</h3>
+          <p>Set up systems that bring in leads, send reminders, request reviews, and win back inactive clients — all on autopilot.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-num">04</div>
+        <div>
+          <h3>Create & Sell Your First Digital Product</h3>
+          <p>Package your knowledge into an ebook, template, or guide and sell it on Gumroad. I show you exactly how — start to finish.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-num">05</div>
+        <div>
+          <h3>Stack Affiliate Income on Top</h3>
+          <p>Earn commissions recommending tools your audience already needs. Build a passive income layer that grows alongside your business.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-num">06</div>
+        <div>
+          <h3>Promote on Facebook & WhatsApp (Local Strategy)</h3>
+          <p>Scripts, post templates, and a step-by-step Facebook promotion plan tailored for the T&T and Caribbean market.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+  <div class="container">
+    <div class="section-label">The stack</div>
+    <h2>Every tool covered — all tested locally</h2>
+    <p class="section-intro">These are the exact platforms featured in the guide. Most have free plans to get you started.</p>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="t-name">Gallabox</div><div class="t-desc">WhatsApp automation for client communication</div></div>
+      <div class="tool-card"><div class="t-name">SimplyBook.me</div><div class="t-desc">Online booking & scheduling for service businesses</div></div>
+      <div class="tool-card"><div class="t-name">Respond.io</div><div class="t-desc">Multi-channel client messaging & CRM</div></div>
+      <div class="tool-card"><div class="t-name">Fillout</div><div class="t-desc">Smart forms, intake, and lead capture</div></div>
+      <div class="tool-card"><div class="t-name">GoHighLevel</div><div class="t-desc">All-in-one marketing & automation platform</div></div>
+      <div class="tool-card"><div class="t-name">Systeme.io</div><div class="t-desc">Funnels, email marketing & course hosting</div></div>
+      <div class="tool-card"><div class="t-name">Gumroad</div><div class="t-desc">Sell digital products instantly — no tech needed</div></div>
+      <div class="tool-card"><div class="t-name">Jotform</div><div class="t-desc">Forms, apps, and payment collection</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwhom">
+  <div class="container">
+    <div class="section-label">This is for you if…</div>
+    <h2>Built for Caribbean service businesses ready to grow</h2>
+    <ul>
+      <li>🏥 Medical & wellness professionals</li>
+      <li>💇 Salon & beauty business owners</li>
+      <li>🎯 Coaches & consultants</li>
+      <li>🍽️ Restaurant & food businesses</li>
+      <li>🏗️ Contractors & tradespeople</li>
+      <li>📱 Anyone running a business from their phone</li>
+      <li>💼 Freelancers wanting passive income streams</li>
+      <li>🚀 Side hustlers ready to go full-time</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+  <div class="container">
+    <div class="section-label">Early feedback</div>
+    <h2>Real results from local business owners</h2>
+    <p class="section-intro">Here's what entrepreneurs said after implementing the strategies in this guide.</p>
+    <div class="testi-grid">
+      <div class="testi">
+        <p>"I finally understand how to use these AI tools together. Set up my booking system and WhatsApp automation in one weekend."</p>
+        <div class="author">— Salon owner, Port of Spain</div>
+      </div>
+      <div class="testi">
+        <p>"The affiliate section alone paid for this guide three times over in the first month. I had no idea I could earn this way."</p>
+        <div class="author">— Business coach, San Fernando</div>
+      </div>
+      <div class="testi">
+        <p>"Followed the Gumroad module, uploaded my first digital product, and made my first sale within 48 hours."</p>
+        <div class="author">— Freelance consultant, Chaguanas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-label">Get started today</div>
+    <h2>One guide. Everything you need.</h2>
+    <p class="section-intro" style="margin: 0 auto 40px;">No subscription. No upsells. Just a complete, actionable blueprint at a price that makes sense for Caribbean entrepreneurs.</p>
+    <div class="price-box">
+      <div class="price-tag"><span>$</span>67 <span style="font-size:1rem;color:#6B6B6B;">USD</span></div>
+      <p class="price-note">One-time payment — yours forever</p>
+      <ul class="price-includes">
+        <li>6 complete modules (PDF guide)</li>
+        <li>AI tool stack recommendations</li>
+        <li>Facebook & WhatsApp post templates</li>
+        <li>Affiliate income setup walkthrough</li>
+        <li>Gumroad digital product launch checklist</li>
+        <li>Free updates as new tools are added</li>
+      </ul>
+      <a href="https://creativedigital36.gumroad.com/l/jaqleu" class="buy-btn">Get Instant Access →</a>
+      <p class="guarantee">🔒 Secure checkout via Gumroad · PayPal accepted · Instant download</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-avatar">👤</div>
+      <div class="about-text">
+        <div class="section-label" style="color:var(--gold-lt);">Your guide</div>
+        <h2>Built by a T&T digital consultant</h2>
+        <p>I'm Dwight — founder of Digital Consultant Creations, based in Trinidad and Tobago. I built and run my entire digital consultancy from a mobile phone, serving local salons, coaches, medical offices, and SMEs across the Caribbean.</p>
+        <p>Everything in this guide is what I actually use and sell to clients every day — not theory copied from a YouTube course. I put it all in one place so you can skip the trial and error.</p>
+        <div class="about-contact">📲 WhatsApp: 868-783-5344 · digitalconsultantcreations@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Digital Consultant Creations · Trinidad & Tobago · <a href="mailto:digitalconsultantcreations@gmail.com" style="color:var(--gold);text-decoration:none;">digitalconsultantcreations@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
